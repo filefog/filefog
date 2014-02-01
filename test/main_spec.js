@@ -4,6 +4,7 @@ describe('Config', function(){
     describe('#getConfig()', function(){
         var FileFog = null
         before(function(){
+            delete require.cache[require.resolve("../lib/main.js")]
             FileFog = require("../lib/main.js")
         })
 
@@ -35,6 +36,7 @@ describe('Config', function(){
     describe('#setConfig()', function(){
         var FileFog = null
         before(function(){
+            delete require.cache[require.resolve("../lib/main.js")]
             FileFog = require("../lib/main.js")
         })
 
@@ -63,11 +65,13 @@ describe('Config', function(){
     describe('#generateProviderOptions()', function(){
         var FileFog = null
         before(function(){
+            delete require.cache[require.resolve("../lib/main.js")]
             FileFog = require("../lib/main.js")
         })
 
         it('should generate provider options with no overrides', function(){
             assert.deepEqual(FileFog.generateProviderOptions("skydrive"), {
+                "service_name" : "skydrive",
                 "client_key" : '',
                 "client_secret" : '',
                 "client_scope" : "wl.basic wl.emails wl.offline_access wl.skydrive_update",
@@ -77,6 +81,7 @@ describe('Config', function(){
 
         it('should generate provider options with client overrides', function(){
             assert.deepEqual(FileFog.generateProviderOptions("skydrive",{"client_key": "test_key","client_secret":"test_secret"}), {
+                "service_name" : "skydrive",
                 "client_key" : 'test_key',
                 "client_secret" : 'test_secret',
                 "client_scope" : "wl.basic wl.emails wl.offline_access wl.skydrive_update",
@@ -87,6 +92,7 @@ describe('Config', function(){
     describe('#provider()', function(){
         var FileFog = null
         before(function(){
+            delete require.cache[require.resolve("../lib/main.js")]
             FileFog = require("../lib/main.js")
         })
 
