@@ -1,0 +1,24 @@
+{
+  "author": "Jason Kulatunga",
+  "name": "filefog",
+  "description": "",
+  "version": "",
+  "repository": {
+    "url": ""
+  },
+  "main": "./lib/main",
+  "dependencies": {
+    "googleapis": "~0.6.1",
+    "q": "~1.0.0",
+    "dropbox": "~0.10.2",
+    "oauth": "~0.9.11",
+    "request": "~2.33.0",
+    "winston": "~0.7.2",
+    "node.extend": "~1.0.9"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
