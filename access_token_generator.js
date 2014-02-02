@@ -1,5 +1,9 @@
 delete require.cache[require.resolve("../lib/main.js")]
-var FileFog = require("../lib/main.js")
+var FileFog = require("lib/main.js")
+
+//The following are test keys for a FileFog Integration Test applications. Please don't (ab)use these keys are they are used for automated testing.
+//If you want to use your own set of access tokens within the test harness you can generate them with this file, just modify the FileFog.provider('box') line.
+
 
 FileFog.setConfig({
     google : {

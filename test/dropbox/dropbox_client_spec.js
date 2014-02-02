@@ -1,6 +1,7 @@
 var assert = require('assert')
 require("mocha-as-promised")();
 
+var test_oauth_data = {access_token:"TK2Xp3yDi3YAAAAAAAAAAeegaucYDM_R1-MkfWAKU1h_uFVp6-bsldcEYhDWvWrK"}
 
 describe('Dropbox Client', function(){
     var FileFog = null
@@ -21,7 +22,7 @@ describe('Dropbox Client', function(){
         var testFileContent = "this is test content";
         before(function(done){
             testFileName =  require('../utility').guid()+'_test.txt'
-            Provider.CreateClient({access_token:"TK2Xp3yDi3YAAAAAAAAAAeegaucYDM_R1-MkfWAKU1h_uFVp6-bsldcEYhDWvWrK"}).then(function(client){
+            Provider.CreateClient(test_oauth_data).then(function(client){
                 Client = client;
                 done();
             })
@@ -60,7 +61,7 @@ describe('Dropbox Client', function(){
         var testFolderName = null;
         before(function(done){
             testFolderName =  require('../utility').guid()+'_test'
-            Provider.CreateClient({access_token:"TK2Xp3yDi3YAAAAAAAAAAeegaucYDM_R1-MkfWAKU1h_uFVp6-bsldcEYhDWvWrK"}).then(function(client){
+            Provider.CreateClient(test_oauth_data).then(function(client){
                 Client = client;
                 done();
             })
@@ -98,7 +99,7 @@ describe('Dropbox Client', function(){
     describe('Account Methods', function(){
         var Client = null;
         before(function(done){
-            Provider.CreateClient({access_token:"TK2Xp3yDi3YAAAAAAAAAAeegaucYDM_R1-MkfWAKU1h_uFVp6-bsldcEYhDWvWrK"}).then(function(client){
+            Provider.CreateClient(test_oauth_data).then(function(client){
                 Client = client;
                 done();
             })
