@@ -25,7 +25,7 @@ FileFog.setConfig({
         client_secret : 'j6vluc5yq7dxnj6'
     }
 });
-var provider = FileFog.provider('box');
+var provider = FileFog.provider('google');
 
 
 var readline = require('readline')
