@@ -17,7 +17,8 @@
     "node.extend": "~1.0.9"
   },
   "devDependencies": {
-    "mocha": "~1.17.1"
+    "mocha": "~1.17.1",
+    "mocha-as-promised": "~2.0.0"
   },
   "optionalDependencies": {},
   "engines": {
