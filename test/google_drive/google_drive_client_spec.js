@@ -17,11 +17,16 @@ describe('Google Client', function () {
             client_secret: 'mWURYHmMKZxr6aeR7DTjRu-q'
         }})
         Provider = FileFog.provider("google")
+        return Provider.oAuthRefreshAccessToken(test_oauth_data).then(function(oauth_data){
+            test_oauth_data = oauth_data
+        });
+
     })
 
     describe('File Methods', function () {
         var Client = null;
         var testFileName = null;
+        var testFileID = null;
         var testFileContent = "this is test content";
         before(function (done) {
             testFileName = require('../utility').guid() + '_test.txt'
@@ -33,29 +38,30 @@ describe('Google Client', function () {
 
         it('should successfully Create file in root directory', function () {
             return Client.CreateFile(testFileName, null, new Buffer(testFileContent)).then(function (response) {
-                console.log(response);
-                assert(response.isFile);
-                assert.equal(response.path, '/' + testFileName);
+                assert.notEqual(response.mimeType, 'application/vnd.google-apps.folder');
+                assert.equal(response.title, testFileName);
+                testFileID = response.id;
             })
         })
 
         it('should successfully Read file metadata', function () {
-            return Client.GetFileInformation('/' + testFileName).then(function (response) {
-                assert(response.isFile);
-                assert.equal(response.path, '/' + testFileName);
+            return Client.GetFileInformation(testFileID).then(function (response) {
+                assert.notEqual(response.mimeType, 'application/vnd.google-apps.folder');
+                assert.equal(response.title, testFileName);
             })
         })
 
         it('should successfully Read file contents', function () {
-            return Client.DownloadFile('/' + testFileName).then(function (response) {
-                assert.equal(response.toString(), testFileContent);
+            return Client.DownloadFile(testFileID).then(function (response) {
+                //TODO: this seems to break due to a bug in node edge, check if errors occur in updated edge version.
+                assert.equal(response.body.toString(), testFileContent);
             })
         })
 
         it('should successfully Delete file', function () {
-            return Client.DeleteFile('/' + testFileName).then(function (response) {
-                assert.equal(response.path, '/' + testFileName);
-                assert(response.isRemoved);
+            return Client.DeleteFile(testFileID).then(function (response) {
+                assert.equal(response.title, testFileName);
+                assert(response.explicitlyTrashed);
             })
         })
     })
@@ -63,6 +69,7 @@ describe('Google Client', function () {
     describe('Folder Methods', function () {
         var Client = null;
         var testFolderName = null;
+        var testFolderID = null;
         before(function (done) {
             testFolderName = require('../utility').guid() + '_test'
             Provider.CreateClient(test_oauth_data).then(function (client) {
@@ -73,29 +80,31 @@ describe('Google Client', function () {
 
         it('should successfully Create folder in root directory', function () {
             return Client.CreateFolder(testFolderName).then(function (response) {
-                assert(response.isFolder);
-                assert.equal(response.path, '/' + testFolderName);
+                console.log(response)
+                assert.equal(response.mimeType, 'application/vnd.google-apps.folder');
+                assert.equal(response.title, testFolderName);
+                testFolderID = response.id;
             })
         })
 
         it('should successfully Read folder metadata', function () {
-            return Client.GetFolderInformation('/' + testFolderName).then(function (response) {
-                assert(response.isFolder);
-                assert.equal(response.path, '/' + testFolderName);
+            return Client.GetFolderInformation(testFolderID).then(function (response) {
+                assert.equal(response.mimeType, 'application/vnd.google-apps.folder');
+                assert.equal(response.title, testFolderName);
             })
         })
 
         it('should successfully Read folder contents', function () {
-            return Client.RetrieveFolderItems('/' + testFolderName).then(function (response) {
-                assert.deepEqual(response.content_array, []);
-                assert.deepEqual(response.content_stat_array, []);
-            })
+            return Client.RetrieveFolderItems(testFolderID).then(function (response) {
+                assert.equal(response.kind, 'drive#childList');
+                assert.deepEqual(response.items, [])
+            });
         })
 
         it('should successfully Delete folder', function () {
-            return Client.DeleteFolder('/' + testFolderName).then(function (response) {
-                assert.equal(response.path, '/' + testFolderName);
-                assert(response.isRemoved);
+            return Client.DeleteFolder(testFolderID).then(function (response) {
+                assert.equal(response.title, testFolderName);
+                assert(response.explicitlyTrashed);
             })
         })
     })
@@ -111,6 +120,7 @@ describe('Google Client', function () {
 
         it('should access account info', function () {
             return Client.AccountInfo().then(function (response) {
+                console.log(response)
                 assert(response.name);
                 assert(response.email);
             })
@@ -118,8 +128,8 @@ describe('Google Client', function () {
 
         it('should access quota info', function () {
             return Client.CheckQuota().then(function (response) {
-                assert(response.privateBytes);
-                assert(response.quota);
+                assert(response.quotaBytesTotal);
+                assert(response.quotaBytesUsed);
             })
         })
     })

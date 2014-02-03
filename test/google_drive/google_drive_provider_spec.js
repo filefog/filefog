@@ -21,7 +21,7 @@ describe('Google Provider', function () {
             assert.equal(parsed.query.response_type, "code")
             assert.equal(parsed.query.access_type, "offline")
             assert.equal(parsed.query.client_id, "777041726477-a5o1tp6f3i9m1me3tj5vhpnrn1jge43c.apps.googleusercontent.com")
-            assert.equal(parsed.query.scope, 'https://www.googleapis.com/auth/drive')
+            assert.equal(parsed.query.scope, 'https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/userinfo.email')
 
         })
     })

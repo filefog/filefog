@@ -12,7 +12,7 @@ describe('Config', function () {
             assert.deepEqual(FileFog.getConfig().google, {
                 "client_key": '',
                 "client_secret": '',
-                "client_scope": "https://www.googleapis.com/auth/drive"
+                "client_scope": "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/userinfo.email"
             });
             assert.deepEqual(FileFog.getConfig().skydrive, {
                 "client_key": '',
@@ -45,7 +45,7 @@ describe('Config', function () {
             assert.deepEqual(FileFog.getConfig().google, {
                 "client_key": 'test_key',
                 "client_secret": 'test_secret',
-                "client_scope": "https://www.googleapis.com/auth/drive"
+                "client_scope": "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/userinfo.email"
             });
             assert.deepEqual(FileFog.getConfig().skydrive, {
                 "client_key": '',
