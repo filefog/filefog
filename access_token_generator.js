@@ -1,5 +1,5 @@
-delete require.cache[require.resolve("../lib/main.js")]
-var FileFog = require("lib/main.js")
+delete require.cache[require.resolve("./lib/main.js")]
+var FileFog = require("./lib/main.js")
 
 //The following are test keys for a FileFog Integration Test applications. Please don't (ab)use these keys are they are used for automated testing.
 //If you want to use your own set of access tokens within the test harness you can generate them with this file, just modify the FileFog.provider('box') line.
@@ -12,8 +12,8 @@ FileFog.setConfig({
         client_scope : "https://www.googleapis.com/auth/drive"
     },
     skydrive : {
-        client_key : '',
-        client_secret : '',
+        client_key : '000000004C10EA03',
+        client_secret : 'YfSMQ7El6nN5hotB4zDKtrpishCd1P4M',
         client_scope : "wl.basic wl.emails wl.offline_access wl.skydrive_update"
     },
     box : {
@@ -25,7 +25,15 @@ FileFog.setConfig({
         client_secret : 'j6vluc5yq7dxnj6'
     }
 });
-var provider = FileFog.provider('google');
+var provider_options = { redirect_url :function (service){
+        var service_name = service.toLowerCase();
+        if(service_name == "skydrive")
+            return "http://www.example.edu/service/callback/skydrive";
+        else
+            return 'http://www.example.com:3000/service/callback/' + service_name
+    }
+}
+var provider = FileFog.provider('skydrive',provider_options);
 
 
 var readline = require('readline')

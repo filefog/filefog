@@ -7,8 +7,8 @@ describe('SkyDrive Provider', function () {
         delete require.cache[require.resolve("../../lib/main.js")]
         FileFog = require("../../lib/main.js")
         FileFog.setConfig({skydrive: {
-            client_key: '',
-            client_secret: ''
+            client_key: '000000004C10EA03',
+            client_secret: 'YfSMQ7El6nN5hotB4zDKtrpishCd1P4M'
         }})
         Provider = FileFog.provider("skydrive")
     })
@@ -19,7 +19,7 @@ describe('SkyDrive Provider', function () {
             assert.equal(parsed.hostname, "login.live.com")
             assert.equal(parsed.query.redirect_uri, FileFog.redirect_url('skydrive'))
             assert.equal(parsed.query.response_type, "code")
-            assert.equal(parsed.query.client_id, "")
+            assert.equal(parsed.query.client_id, "000000004C10EA03")
             assert.equal(parsed.query.scope, 'wl.basic wl.emails wl.offline_access wl.skydrive_update')
 
         })
