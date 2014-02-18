@@ -4,7 +4,7 @@
   "description": "Cloud Storage API Wrapper supporting Box, Dropbox, Skydrive, Google Drive",
   "version": "0.0.1",
   "repository": {
-    "url": ""
+    "url": "git@github.com:AnalogJ/filefog.git"
   },
   "main": "./lib/main",
   "dependencies": {
