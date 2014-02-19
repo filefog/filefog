@@ -1,10 +1,7 @@
 var assert = require('assert');
 require("mocha-as-promised")();
 
-var test_oauth_data = { access_token: 'ya29.1.AADtN_W5vWUjYklaE_ZNkJBd2y9Ot60jF4SewLivnLgLHDYhmiadzbPPZntHmL4nceXs0w',
-    token_type: 'Bearer',
-    expires_in: 3600,
-    refresh_token: '1/IMcWJR9KJPVguuKLUrHzMjRl-XECLf6mK2YoUYnbQaU' }
+var test_oauth_data = require('../utility.js').loadAccessToken('google')
 
 describe('Google Client', function () {
     var FileFog = null
@@ -21,6 +18,17 @@ describe('Google Client', function () {
             test_oauth_data = oauth_data
         });
 
+    })
+
+    describe('Standard Init Calls', function(){
+        //this is not necessarily a test, but needs to be done incase the token has expired.
+        it('should successfully refresh oauth_token', function () {
+            return Provider.oAuthRefreshAccessToken(test_oauth_data).then(function(new_oauth_data){
+                assert(new_oauth_data);
+                test_oauth_data = new_oauth_data;
+                require('../utility.js').saveAccessToken('google', new_oauth_data);
+            })
+        })
     })
 
     describe('File Methods', function () {

@@ -1,12 +1,7 @@
 var assert = require('assert');
 require("mocha-as-promised")();
 
-var test_oauth_data = { access_token: '7sXD7LEI73V23mMyXJoUGZGZ3YrgE55N',
-    refresh_token: 'wEFBv9ibkspDMWkHZlAaiKt1V7GKfzxDvVMr4qJih89HrCzn9bObe3zNqsO6ISge',
-    raw: { access_token: '7sXD7LEI73V23mMyXJoUGZGZ3YrgE55N',
-        expires_in: 3863,
-        restricted_to: [],
-        token_type: 'bearer' } };
+var test_oauth_data = require('../utility.js').loadAccessToken('box')
 
 describe('Box Client', function () {
     var FileFog = null
@@ -20,6 +15,18 @@ describe('Box Client', function () {
         }})
         Provider = FileFog.provider("box")
     })
+
+    describe('Standard Init Calls', function(){
+        //this is not necessarily a test, but needs to be done incase the token has expired.
+        it('should successfully refresh oauth_token', function () {
+            return Provider.oAuthRefreshAccessToken(test_oauth_data).then(function(new_oauth_data){
+                assert(new_oauth_data);
+                test_oauth_data = new_oauth_data;
+                require('../utility.js').saveAccessToken('box', new_oauth_data);
+            })
+        })
+    })
+
 
     describe('File Methods', function () {
         var Client = null;

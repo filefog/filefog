@@ -1,15 +1,7 @@
 var assert = require('assert');
 require("mocha-as-promised")();
 
-var test_oauth_data = {
-    access_token: 'EwA4Aq1DBAAUGCCXc8wU/zFu9QnLdZXy+YnElFkAAeGB1ar2aeapMBwSWuE6hZdNrcGxW51d8dZwA+KYfeilMnvuWIH/5oYlzpG0347HD2VZVXtYUCnbT52vfeiMlRPDp44K34E93AI2JtYk8Bc05Py47bMeKHx8XUPjA6tJTbGuSGLAOf8yHAXfr0Imse85rXijOgcRMROkOSQ7sqW19u8L6Og6wLeaVJjoyeTHb8bePbtgTNLqJ0YtvikMf52P8Nk7PxkaLOmMKPa1yc083Ku0KaX66ZroY4foRc3+/Q23OWtwnG7XQeo78b1V+o89qA8MKup8rw+C3zcgYVeKCn6tKsV5+W2t+eD6E6cODu5XsDGj8b1v2//b93ite4gDZgAACFNT86xZRwpFCAGPBbd+5Z4uixXNb0HuJOp4ieCFkZqz5VHXGYHfFfLXCixwpZ5kOMpEf9UdRQQECMMPv70LEc4VSosYA7dqyxW72RZaZ3CaOwnZDhFlhKVwhiIIfWrFgPlZpGeOxJKqdcjYIvA1fEe51vrxiGxGoKBhquOKaaKasBULgL/xnoHkbU3NhOANNGl/jJj68FU+pXEd+GHxXFPgn2aHPDyAUpdMLgI6JhtHJay0dOrRFoyKSrOa39QZWXWklHqfrvyDHwisW2nn2t5Tze8oNG7N+OtSAXrhdeJPoR3pH+I5F95PaREswwhmqqAX634dPJqx9twHEAfbutozQ+fld/5atd/IoB3XvgSpDboAAA==',
-    refresh_token: 'Cgm0sEXvHAtDjLaTe5IxBjGu5q*OxT0oQv3rT6eprZV6R5P!LB4MywusKMoQpIgo97mDoVkwXVNjKw!jGja7!EnrXL5cGlfOzoMUsXGhfKi7GsEVEFmhqfgaR*!8VG481xadja6YS3B8tkbcYEHIX7Z!2Yd!7clsjQ1UndZ7WL46mv5vAudiyB4TZf72kaHFc*HmX5zRLYZX4RhXwsTkmJaOep34ks!GnmUqLOwwKlDgw0acCHNclpPjLM2ONED1jcgKyzApQBhEJSiXugvSMBPYj9pSrSAEKhJG0c!DI7UQp5Xk0vvE!T0SIrHJYlqyJHfUnTYWmuhR5WqoLel9ubhzgZaK3!KMcT*dIwxCfLRPLJDbvB77eXSutfIb2N7Vm7YkOQj5BWVYUgF7LzC076A$',
-    raw:
-    { token_type: 'bearer',
-        expires_in: 3600,
-        scope: 'wl.basic wl.emails wl.offline_access wl.skydrive_update',
-        access_token: 'EwA4Aq1DBAAUGCCXc8wU/zFu9QnLdZXy+YnElFkAAeGB1ar2aeapMBwSWuE6hZdNrcGxW51d8dZwA+KYfeilMnvuWIH/5oYlzpG0347HD2VZVXtYUCnbT52vfeiMlRPDp44K34E93AI2JtYk8Bc05Py47bMeKHx8XUPjA6tJTbGuSGLAOf8yHAXfr0Imse85rXijOgcRMROkOSQ7sqW19u8L6Og6wLeaVJjoyeTHb8bePbtgTNLqJ0YtvikMf52P8Nk7PxkaLOmMKPa1yc083Ku0KaX66ZroY4foRc3+/Q23OWtwnG7XQeo78b1V+o89qA8MKup8rw+C3zcgYVeKCn6tKsV5+W2t+eD6E6cODu5XsDGj8b1v2//b93ite4gDZgAACFNT86xZRwpFCAGPBbd+5Z4uixXNb0HuJOp4ieCFkZqz5VHXGYHfFfLXCixwpZ5kOMpEf9UdRQQECMMPv70LEc4VSosYA7dqyxW72RZaZ3CaOwnZDhFlhKVwhiIIfWrFgPlZpGeOxJKqdcjYIvA1fEe51vrxiGxGoKBhquOKaaKasBULgL/xnoHkbU3NhOANNGl/jJj68FU+pXEd+GHxXFPgn2aHPDyAUpdMLgI6JhtHJay0dOrRFoyKSrOa39QZWXWklHqfrvyDHwisW2nn2t5Tze8oNG7N+OtSAXrhdeJPoR3pH+I5F95PaREswwhmqqAX634dPJqx9twHEAfbutozQ+fld/5atd/IoB3XvgSpDboAAA==',
-    authentication_token: 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjEiLCJ0eXAiOiJKV1QifQ.eyJ2ZXIiOjEsImlzcyI6InVybjp3aW5kb3dzOmxpdmVpZCIsImV4cCI6MTM5MTYzOTk4MCwidWlkIjoiYmIyNTA5ZjlhNzc1MTkzMWQxMTQ4NmU1OGE1MmQwMjUiLCJhdWQiOiJ3d3cuZXhhbXBsZS5lZHUiLCJ1cm46bWljcm9zb2Z0OmFwcHVyaSI6ImFwcGlkOi8vMDAwMDAwMDA0QzEwRUEwMyIsInVybjptaWNyb3NvZnQ6YXBwaWQiOiIwMDAwMDAwMDRDMTBFQTAzIn0.u0WNU90sO1WxCYpSvk72SGWKSEVu1iuyKYmZsmrtddg' } }
+var test_oauth_data = require('../utility.js').loadAccessToken('skydrive')
 
 describe('Skydrive Client', function () {
     var FileFog = null
@@ -33,6 +25,17 @@ describe('Skydrive Client', function () {
         }
 
         Provider = FileFog.provider("skydrive",provider_options)
+    })
+
+    describe('Standard Init Calls', function(){
+        //this is not necessarily a test, but needs to be done incase the token has expired.
+        it('should successfully refresh oauth_token', function () {
+            return Provider.oAuthRefreshAccessToken(test_oauth_data).then(function(new_oauth_data){
+                assert(new_oauth_data);
+                test_oauth_data = new_oauth_data;
+                require('../utility.js').saveAccessToken('skydrive', new_oauth_data);
+            })
+        })
     })
 
     describe('File Methods', function () {

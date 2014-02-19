@@ -1,7 +1,7 @@
 var assert = require('assert');
 require("mocha-as-promised")();
 
-var test_oauth_data = {access_token: "TK2Xp3yDi3YAAAAAAAAAAeegaucYDM_R1-MkfWAKU1h_uFVp6-bsldcEYhDWvWrK"};
+var test_oauth_data = require('../utility.js').loadAccessToken('dropbox')
 
 describe('Dropbox Client', function () {
     var FileFog = null
@@ -14,6 +14,17 @@ describe('Dropbox Client', function () {
             client_secret: 'j6vluc5yq7dxnj6'
         }})
         Provider = FileFog.provider("dropbox")
+    })
+
+    describe('Standard Init Calls', function(){
+        //this is not necessarily a test, but needs to be done incase the token has expired.
+        it('should successfully refresh oauth_token', function () {
+            return Provider.oAuthRefreshAccessToken(test_oauth_data).then(function(new_oauth_data){
+                assert(new_oauth_data);
+                test_oauth_data = new_oauth_data;
+                require('../utility.js').saveAccessToken('dropbox', new_oauth_data);
+            })
+        })
     })
 
     describe('File Methods', function () {

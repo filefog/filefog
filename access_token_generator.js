@@ -30,20 +30,70 @@ var provider_options = { redirect_url :function (service){
         if(service_name == "skydrive")
             return "http://www.example.edu/service/callback/skydrive";
         else
-            return 'http://www.example.com:3000/service/callback/' + service_name
+            return 'http://localhost:3000/service/callback/' + service_name
     }
 }
-var provider = FileFog.provider('skydrive',provider_options);
-
 
 var readline = require('readline')
 var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
+
+////########################### Dropbox ###################################
+//
+//var PROVIDER_NAME = "dropbox"
+//var provider = FileFog.provider(PROVIDER_NAME,provider_options);
+//
+//console.log('Visit the url: ', provider.oAuthGetAuthorizeUrl());
+//rl.question('Enter the code here:', function(code){
+//    provider.oAuthGetAccessToken(code).then(function(access_tokens){
+//        var utility = require('./test/utility.js');
+//        utility.saveAccessToken(PROVIDER_NAME,access_tokens);
+//        console.log(access_tokens)
+//    })
+//});
+//
+////########################### Google ###################################
+//
+//var PROVIDER_NAME = "google"
+//var provider = FileFog.provider(PROVIDER_NAME,provider_options);
+//
+//console.log('Visit the url: ', provider.oAuthGetAuthorizeUrl());
+//rl.question('Enter the code here:', function(code){
+//    provider.oAuthGetAccessToken(code).then(function(access_tokens){
+//        var utility = require('./test/utility.js');
+//        utility.saveAccessToken(PROVIDER_NAME,access_tokens);
+//        console.log(access_tokens)
+//    })
+//});
+////
+////########################### Skydrive ###################################
+//
+//var PROVIDER_NAME = "skydrive"
+//var provider = FileFog.provider(PROVIDER_NAME,provider_options);
+//
+//console.log('Visit the url: ', provider.oAuthGetAuthorizeUrl());
+//rl.question('Enter the code here:', function(code){
+//    provider.oAuthGetAccessToken(code).then(function(access_tokens){
+//        var utility = require('./test/utility.js');
+//        utility.saveAccessToken(PROVIDER_NAME,access_tokens);
+//        console.log(access_tokens)
+//    })
+//});
+
+
+//########################### box ###################################
+
+var PROVIDER_NAME = "box"
+var provider = FileFog.provider(PROVIDER_NAME,provider_options);
+
 console.log('Visit the url: ', provider.oAuthGetAuthorizeUrl());
 rl.question('Enter the code here:', function(code){
     provider.oAuthGetAccessToken(code).then(function(access_tokens){
+        var utility = require('./test/utility.js');
+        utility.saveAccessToken(PROVIDER_NAME,access_tokens);
         console.log(access_tokens)
     })
 });
