@@ -1,0 +1,35 @@
+{
+    "content_array": [],
+    "folder_stat": {
+        "_json": {
+            "hash": "a58891dab39fb6e80caa2f6fd9e3459c",
+            "revision": 283,
+            "rev": "11b1ec86afc",
+            "thumb_exists": false,
+            "bytes": 0,
+            "modified": "Tue, 18 Feb 2014 21:07:04 +0000",
+            "path": "/101cf425-5712-0611-e631-5ecf31ec8ab5_test",
+            "is_dir": true,
+            "icon": "folder",
+            "root": "dropbox",
+            "contents": [],
+            "size": "0 bytes"
+        },
+        "path": "/101cf425-5712-0611-e631-5ecf31ec8ab5_test",
+        "name": "101cf425-5712-0611-e631-5ecf31ec8ab5_test",
+        "isFolder": true,
+        "isFile": false,
+        "isRemoved": false,
+        "typeIcon": "folder",
+        "modifiedAt": "2014-02-18T21:07:04.000Z",
+        "clientModifiedAt": null,
+        "inAppFolder": false,
+        "size": 0,
+        "humanSize": "0 bytes",
+        "hasThumbnail": false,
+        "versionTag": "11b1ec86afc",
+        "contentHash": "a58891dab39fb6e80caa2f6fd9e3459c",
+        "mimeType": "inode/directory"
+    },
+    "content_stat_array": []
+}

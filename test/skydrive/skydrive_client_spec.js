@@ -48,7 +48,7 @@ describe('Skydrive Client', function () {
             })
         })
 
-        it('should successfully Create file in root directory', function () {
+        it('should successfully Create folder in root directory', function () {
             return Client.CreateFolder(testFileName, null, null)
             .then(function (response) {
                 console.log("RESPONSE BODY", arguments)

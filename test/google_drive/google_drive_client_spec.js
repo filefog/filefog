@@ -80,7 +80,6 @@ describe('Google Client', function () {
 
         it('should successfully Create folder in root directory', function () {
             return Client.CreateFolder(testFolderName).then(function (response) {
-                console.log(response)
                 assert.equal(response.mimeType, 'application/vnd.google-apps.folder');
                 assert.equal(response.title, testFolderName);
                 testFolderID = response.id;
@@ -120,7 +119,6 @@ describe('Google Client', function () {
 
         it('should access account info', function () {
             return Client.AccountInfo().then(function (response) {
-                console.log(response)
                 assert(response.name);
                 assert(response.email);
             })

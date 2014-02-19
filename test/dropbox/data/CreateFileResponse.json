@@ -1,0 +1,31 @@
+{
+    "_json": {
+        "revision": 281,
+        "rev": "1191ec86afc",
+        "thumb_exists": false,
+        "bytes": 20,
+        "modified": "Tue, 18 Feb 2014 21:07:02 +0000",
+        "client_mtime": "Tue, 18 Feb 2014 21:07:02 +0000",
+        "path": "/58cdaded-e157-64b6-a7f9-8c221209a55a_test.txt",
+        "is_dir": false,
+        "icon": "page_white_text",
+        "root": "dropbox",
+        "mime_type": "text/plain",
+        "size": "20 bytes"
+    },
+    "path": "/58cdaded-e157-64b6-a7f9-8c221209a55a_test.txt",
+    "name": "58cdaded-e157-64b6-a7f9-8c221209a55a_test.txt",
+    "isFolder": false,
+    "isFile": true,
+    "isRemoved": false,
+    "typeIcon": "page_white_text",
+    "modifiedAt": "2014-02-18T21:07:02.000Z",
+    "clientModifiedAt": "2014-02-18T21:07:02.000Z",
+    "inAppFolder": false,
+    "size": 20,
+    "humanSize": "20 bytes",
+    "hasThumbnail": false,
+    "versionTag": "1191ec86afc",
+    "contentHash": null,
+    "mimeType": "text/plain"
+}

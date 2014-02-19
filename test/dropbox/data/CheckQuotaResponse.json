@@ -1,0 +1,25 @@
+{
+    "_json": {
+        "referral_link": "https://db.tt/yoV4jm0j",
+        "display_name": "FileFog Test",
+        "uid": 263340860,
+        "country": "US",
+        "quota_info": {
+            "datastores": 0,
+            "shared": 0,
+            "quota": 2147483648,
+            "normal": 249179
+        },
+        "email": "filefogtest@gmail.com"
+    },
+    "name": "FileFog Test",
+    "email": "filefogtest@gmail.com",
+    "countryCode": "US",
+    "uid": "263340860",
+    "publicAppUrl": null,
+    "referralUrl": "https://db.tt/yoV4jm0j",
+    "quota": 2147483648,
+    "privateBytes": 249179,
+    "sharedBytes": 0,
+    "usedQuota": 249179
+}

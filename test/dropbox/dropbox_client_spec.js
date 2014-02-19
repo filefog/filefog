@@ -30,6 +30,7 @@ describe('Dropbox Client', function () {
 
         it('should successfully Create file in root directory', function () {
             return Client.CreateFile(testFileName, null, new Buffer(testFileContent)).then(function (response) {
+                //require('fs').writeSync('testDROPBOX.text', new Buffer(response), 0)
                 assert(response.isFile);
                 assert.equal(response.path, '/' + testFileName);
             })
