@@ -2,7 +2,7 @@
   "author": "Jason Kulatunga",
   "name": "filefog",
   "description": "Cloud Storage API Wrapper supporting Box, Dropbox, Skydrive, Google Drive",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "url": "https://github.com/AnalogJ/filefog.git"
   },
