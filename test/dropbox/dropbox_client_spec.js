@@ -81,7 +81,6 @@ describe('Dropbox Client', function () {
         describe('when no identifiers provided', function(){
             it('should successfully get root folder information', function () {
                 return Client.GetFolderInformation().then(function (response) {
-                    console.log(response)
                     assert(response.isFolder);
                     assert.equal(response.path, '');
                 })

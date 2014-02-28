@@ -90,7 +90,6 @@ describe('Box Client', function () {
         describe('when no identifiers provided', function(){
             it('should successfully get root folder information', function () {
                 return Client.GetFolderInformation().then(function (response) {
-                    console.log(response.body)
                     var resp_json = JSON.parse(response.body);
                     assert.equal(resp_json.type, "folder");
                 })
@@ -98,8 +97,6 @@ describe('Box Client', function () {
 
             it('should successfully Read root folder metadata', function () {
                 return Client.RetrieveFolderItems().then(function (response) {
-                    console.log("retrieve folder items\n", response.body)
-
                     var resp_json = JSON.parse(response.body);
                     assert.equal(resp_json.total_count, 0);
                     assert.deepEqual(resp_json.entries, []);
@@ -109,7 +106,6 @@ describe('Box Client', function () {
 
         it('should successfully Create folder in root directory', function () {
             return Client.CreateFolder(testFolderName).then(function (response) {
-                console.log("create folder:\n", response.body)
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "folder");
                 assert.equal(resp_json.name, testFolderName);
@@ -119,7 +115,6 @@ describe('Box Client', function () {
 
         it('should successfully Read folder metadata', function () {
             return Client.GetFolderInformation(testFolderID).then(function (response) {
-                console.log("get folder information:\n", response.body)
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "folder");
                 assert.equal(resp_json.name, testFolderName);
@@ -128,8 +123,6 @@ describe('Box Client', function () {
 
         it('should successfully Read folder contents', function () {
             return Client.RetrieveFolderItems(testFolderID).then(function (response) {
-                console.log("retrieve folder items\n", response.body)
-
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.total_count, 0);
                 assert.deepEqual(resp_json.entries, []);
@@ -154,8 +147,6 @@ describe('Box Client', function () {
 
         it('should access account info', function () {
             return Client.AccountInfo().then(function (response) {
-                console.log("account info\n", response.body)
-
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "user");
                 assert(resp_json.name);

@@ -89,7 +89,6 @@ describe('Google Client', function () {
         describe('when no identifiers provided', function(){
             it('should successfully get root folder information', function () {
                 return Client.GetFolderInformation().then(function (response) {
-                    console.log(response)
                     assert.equal(response.mimeType, 'application/vnd.google-apps.folder');
                     assert.equal(response.title, 'My Drive');
                 })
@@ -97,7 +96,6 @@ describe('Google Client', function () {
 
             it('should successfully Read root folder metadata', function () {
                 return Client.RetrieveFolderItems().then(function (response) {
-                    console.log(response)
                     assert.equal(response.kind, 'drive#childList');
                 })
             })
