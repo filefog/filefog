@@ -94,6 +94,25 @@ describe('Skydrive Client', function () {
             })
         })
 
+        describe('when no identifiers provided', function(){
+            it('should successfully get root folder information', function () {
+                return Client.GetFolderInformation().then(function (response) {
+                    console.log(response.body)
+                    var resp_json = JSON.parse(response.body);
+                    assert.equal(resp_json.type, "folder");
+                    assert.equal(resp_json.name, "SkyDrive");
+                })
+            })
+
+            it('should successfully Read root folder metadata', function () {
+                return Client.RetrieveFolderItems().then(function (response) {
+                    var resp_json = JSON.parse(response.body);
+                    //assert.equal(resp_json.count, 0);
+                    //assert.deepEqual(resp_json.data, []);
+                })
+            })
+        })
+
         it('should successfully Create folder in root directory', function () {
             return Client.CreateFolder(testFolderName).then(function (response) {
                 var resp_json = JSON.parse(response.body);

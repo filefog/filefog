@@ -43,6 +43,7 @@ describe('Box Client', function () {
 
         it('should successfully Create file in root directory', function () {
             return Client.CreateFile(testFileName, null, new Buffer(testFileContent)).then(function (response) {
+                console.log("create file:", response.body)
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.entries[0].type, "file");
                 assert.equal(resp_json.entries[0].name, testFileName);
@@ -52,6 +53,7 @@ describe('Box Client', function () {
 
         it('should successfully Read file metadata', function () {
             return Client.GetFileInformation(testFileID).then(function (response) {
+                console.log("file information:", response.body)
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "file");
                 assert.equal(resp_json.name, testFileName);
@@ -66,6 +68,7 @@ describe('Box Client', function () {
 
         it('should successfully Delete file', function () {
             return Client.DeleteFile(testFileID).then(function (response) {
+                console.log("delete file:", response.body)
                 assert.equal(response.body, '');
                 //TODO: check the header for 204 response
             })
@@ -84,8 +87,29 @@ describe('Box Client', function () {
             })
         })
 
+        describe('when no identifiers provided', function(){
+            it('should successfully get root folder information', function () {
+                return Client.GetFolderInformation().then(function (response) {
+                    console.log(response.body)
+                    var resp_json = JSON.parse(response.body);
+                    assert.equal(resp_json.type, "folder");
+                })
+            })
+
+            it('should successfully Read root folder metadata', function () {
+                return Client.RetrieveFolderItems().then(function (response) {
+                    console.log("retrieve folder items\n", response.body)
+
+                    var resp_json = JSON.parse(response.body);
+                    assert.equal(resp_json.total_count, 0);
+                    assert.deepEqual(resp_json.entries, []);
+                })
+            })
+        })
+
         it('should successfully Create folder in root directory', function () {
             return Client.CreateFolder(testFolderName).then(function (response) {
+                console.log("create folder:\n", response.body)
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "folder");
                 assert.equal(resp_json.name, testFolderName);
@@ -95,6 +119,7 @@ describe('Box Client', function () {
 
         it('should successfully Read folder metadata', function () {
             return Client.GetFolderInformation(testFolderID).then(function (response) {
+                console.log("get folder information:\n", response.body)
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "folder");
                 assert.equal(resp_json.name, testFolderName);
@@ -103,6 +128,8 @@ describe('Box Client', function () {
 
         it('should successfully Read folder contents', function () {
             return Client.RetrieveFolderItems(testFolderID).then(function (response) {
+                console.log("retrieve folder items\n", response.body)
+
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.total_count, 0);
                 assert.deepEqual(resp_json.entries, []);
@@ -127,6 +154,8 @@ describe('Box Client', function () {
 
         it('should access account info', function () {
             return Client.AccountInfo().then(function (response) {
+                console.log("account info\n", response.body)
+
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "user");
                 assert(resp_json.name);

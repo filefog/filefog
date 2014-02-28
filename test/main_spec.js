@@ -75,7 +75,7 @@ describe('Config', function () {
                 "client_key": '',
                 "client_secret": '',
                 "client_scope": "wl.basic wl.emails wl.offline_access wl.skydrive_update",
-                "redirect_url": FileFog.redirect_url
+                "redirect_url": FileFog.getRedirectUrlGenerator()("skydrive")
             });
         })
 
@@ -85,7 +85,7 @@ describe('Config', function () {
                 "client_key": 'test_key',
                 "client_secret": 'test_secret',
                 "client_scope": "wl.basic wl.emails wl.offline_access wl.skydrive_update",
-                "redirect_url": FileFog.redirect_url
+                "redirect_url": FileFog.getRedirectUrlGenerator()("skydrive")
             });
         })
     })

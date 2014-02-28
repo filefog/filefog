@@ -17,7 +17,7 @@ describe('Box Provider', function () {
         it('should generate oauth authorize Url', function () {
             var parsed = require('url').parse(Provider.oAuthGetAuthorizeUrl(), true);
             assert.equal(parsed.hostname, "www.box.com")
-            assert.equal(parsed.query.redirect_uri, FileFog.redirect_url('box'))
+            assert.equal(parsed.query.redirect_uri, FileFog.getRedirectUrlGenerator()('box'))
             assert.equal(parsed.query.response_type, "code")
             assert.equal(parsed.query.client_id, "")
         })

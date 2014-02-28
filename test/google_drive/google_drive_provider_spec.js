@@ -17,7 +17,7 @@ describe('Google Provider', function () {
         it('should generate oauth authorize Url', function () {
             var parsed = require('url').parse(Provider.oAuthGetAuthorizeUrl(), true);
             assert.equal(parsed.hostname, "accounts.google.com")
-            assert.equal(parsed.query.redirect_uri, FileFog.redirect_url('google'))
+            assert.equal(parsed.query.redirect_uri, FileFog.getRedirectUrlGenerator()('google'))
             assert.equal(parsed.query.response_type, "code")
             assert.equal(parsed.query.access_type, "offline")
             assert.equal(parsed.query.client_id, "777041726477-a5o1tp6f3i9m1me3tj5vhpnrn1jge43c.apps.googleusercontent.com")

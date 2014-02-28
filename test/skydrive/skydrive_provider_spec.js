@@ -17,7 +17,7 @@ describe('SkyDrive Provider', function () {
         it('should generate oauth authorize Url', function () {
             var parsed = require('url').parse(Provider.oAuthGetAuthorizeUrl(), true);
             assert.equal(parsed.hostname, "login.live.com")
-            assert.equal(parsed.query.redirect_uri, FileFog.redirect_url('skydrive'))
+            assert.equal(parsed.query.redirect_uri, FileFog.getRedirectUrlGenerator()('skydrive'))
             assert.equal(parsed.query.response_type, "code")
             assert.equal(parsed.query.client_id, "000000004C10EA03")
             assert.equal(parsed.query.scope, 'wl.basic wl.emails wl.offline_access wl.skydrive_update')

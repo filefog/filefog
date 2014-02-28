@@ -78,6 +78,20 @@ describe('Dropbox Client', function () {
                 done();
             })
         })
+        describe('when no identifiers provided', function(){
+            it('should successfully get root folder information', function () {
+                return Client.GetFolderInformation().then(function (response) {
+                    console.log(response)
+                    assert(response.isFolder);
+                    assert.equal(response.path, '');
+                })
+            })
+
+            it('should successfully Read root folder metadata', function () {
+                return Client.RetrieveFolderItems().then(function (response) {
+                })
+            })
+        })
 
         it('should successfully Create folder in root directory', function () {
             return Client.CreateFolder(testFolderName).then(function (response) {

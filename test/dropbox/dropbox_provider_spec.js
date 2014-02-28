@@ -19,7 +19,7 @@ describe('Dropbox Provider', function () {
         it('should generate oauth authorize Url', function () {
             var parsed = require('url').parse(Provider.oAuthGetAuthorizeUrl(), true);
             assert.equal(parsed.hostname, "www.dropbox.com")
-            assert.equal(parsed.query.redirect_uri, FileFog.redirect_url('dropbox'))
+            assert.equal(parsed.query.redirect_uri, FileFog.getRedirectUrlGenerator()('dropbox'))
             assert.equal(parsed.query.response_type, "code")
             assert.equal(parsed.query.client_id, "sl47p7pijvtp73h")
         })
