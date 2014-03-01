@@ -3,7 +3,7 @@ require("mocha-as-promised")();
 
 var test_oauth_data = require('../utility.js').loadAccessToken('box')
 
-describe('Box Client', function () {
+describe('Box Client Raw Responses', function () {
     var FileFog = null
     var Provider = null
     before(function () {
@@ -13,7 +13,7 @@ describe('Box Client', function () {
             client_key: 'cch3sssk23ueqsbdh2k2zlv2i7rz06lp',
             client_secret: '6v7ywbCdut5FRdIjDeREofrFGc2ymGmA'
         }})
-        Provider = FileFog.provider("box")
+        Provider = FileFog.provider("box",{raw_response:true})
     })
 
     describe('Standard Init Calls', function(){

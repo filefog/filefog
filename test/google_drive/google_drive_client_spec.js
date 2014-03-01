@@ -3,7 +3,7 @@ require("mocha-as-promised")();
 
 var test_oauth_data = require('../utility.js').loadAccessToken('google')
 
-describe('Google Client', function () {
+describe('Google Client Raw Responses', function () {
     var FileFog = null
     var Provider = null
     before(function () {
@@ -13,7 +13,7 @@ describe('Google Client', function () {
             client_key: '777041726477-a5o1tp6f3i9m1me3tj5vhpnrn1jge43c.apps.googleusercontent.com',
             client_secret: 'mWURYHmMKZxr6aeR7DTjRu-q'
         }})
-        Provider = FileFog.provider("google")
+        Provider = FileFog.provider("google",{raw_response:true})
         return Provider.oAuthRefreshAccessToken(test_oauth_data).then(function(oauth_data){
             test_oauth_data = oauth_data
         });

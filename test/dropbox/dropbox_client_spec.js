@@ -3,7 +3,7 @@ require("mocha-as-promised")();
 
 var test_oauth_data = require('../utility.js').loadAccessToken('dropbox')
 
-describe('Dropbox Client', function () {
+describe('Dropbox Client Raw Responses', function () {
     var FileFog = null
     var Provider = null
     before(function () {
@@ -13,7 +13,7 @@ describe('Dropbox Client', function () {
             client_key: 'sl47p7pijvtp73h',
             client_secret: 'j6vluc5yq7dxnj6'
         }})
-        Provider = FileFog.provider("dropbox")
+        Provider = FileFog.provider("dropbox",{raw_response:true})
     })
 
     describe('Standard Init Calls', function(){

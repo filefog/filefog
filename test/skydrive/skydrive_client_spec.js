@@ -3,7 +3,7 @@ require("mocha-as-promised")();
 
 var test_oauth_data = require('../utility.js').loadAccessToken('skydrive')
 
-describe('Skydrive Client', function () {
+describe('Skydrive Client Raw Responses', function () {
     var FileFog = null
     var Provider = null
     before(function () {
@@ -15,13 +15,9 @@ describe('Skydrive Client', function () {
             client_scope : "wl.basic wl.emails wl.offline_access wl.skydrive_update"
         }})
 
-        var provider_options = { redirect_url :function (service){
-            var service_name = service.toLowerCase();
-            if(service_name == "skydrive")
-                return "http://www.example.edu/service/callback/skydrive";
-            else
-                return 'http://localhost:3000/service/callback/' + service_name
-        }
+        var provider_options = {
+            redirect_url : "http://www.example.edu/service/callback/skydrive",
+            raw_response: true
         }
 
         Provider = FileFog.provider("skydrive",provider_options)
@@ -97,7 +93,6 @@ describe('Skydrive Client', function () {
         describe('when no identifiers provided', function(){
             it('should successfully get root folder information', function () {
                 return Client.GetFolderInformation().then(function (response) {
-                    console.log(response.body)
                     var resp_json = JSON.parse(response.body);
                     assert.equal(resp_json.type, "folder");
                     assert.equal(resp_json.name, "SkyDrive");
