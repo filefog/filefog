@@ -52,6 +52,7 @@ describe('Skydrive Client Raw Responses', function () {
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.name, testFileName);
                 testFileID = resp_json.id
+                console.log(resp_json)
             })
         })
 
@@ -61,6 +62,7 @@ describe('Skydrive Client Raw Responses', function () {
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "file");
                 assert.equal(resp_json.name, testFileName);
+                console.log(resp_json)
             })
         })
 
@@ -96,6 +98,7 @@ describe('Skydrive Client Raw Responses', function () {
                     var resp_json = JSON.parse(response.body);
                     assert.equal(resp_json.type, "folder");
                     assert.equal(resp_json.name, "SkyDrive");
+                    console.log(resp_json)
                 })
             })
 
@@ -104,6 +107,7 @@ describe('Skydrive Client Raw Responses', function () {
                     var resp_json = JSON.parse(response.body);
                     //assert.equal(resp_json.count, 0);
                     //assert.deepEqual(resp_json.data, []);
+                    console.log(resp_json)
                 })
             })
         })
@@ -114,6 +118,8 @@ describe('Skydrive Client Raw Responses', function () {
                 assert.equal(resp_json.type, "folder");
                 assert.equal(resp_json.name, testFolderName);
                 testFolderID = resp_json.id;
+                console.log(resp_json)
+
             })
         })
 
@@ -122,6 +128,8 @@ describe('Skydrive Client Raw Responses', function () {
                 var resp_json = JSON.parse(response.body);
                 assert.equal(resp_json.type, "folder");
                 assert.equal(resp_json.name, testFolderName);
+                console.log(resp_json)
+
             })
         })
 
@@ -130,6 +138,7 @@ describe('Skydrive Client Raw Responses', function () {
                 var resp_json = JSON.parse(response.body);
                 //assert.equal(resp_json.count, 0);
                 assert.deepEqual(resp_json.data, []);
+                console.log(resp_json)
             })
         })
 
@@ -156,12 +165,16 @@ describe('Skydrive Client Raw Responses', function () {
                 assert(resp_json.first_name);
                 assert(resp_json.last_name);
                 assert(resp_json.emails);
+                console.log(resp_json)
             })
         })
 
         it('should access quota info', function () {
-            assert.throws(function () {
-                Client.CheckQuota()
+            return Client.CheckQuota().then(function (response) {
+                var resp_json = JSON.parse(response.body);
+                assert(resp_json.quota);
+                assert(resp_json.available);
+                console.log(resp_json)
             })
 
         })

@@ -1,0 +1,20 @@
+{
+    "id": "folder.959da4d8356be659.959DA4D8356BE659!179",
+    "from": {
+        "name": "Filefog Last",
+        "id": "959da4d8356be659"
+    },
+    "name": "e323bbf9-1fb4-712a-4fc3-5751574212a9_test",
+    "description": "A test folder",
+    "parent_id": "folder.959da4d8356be659",
+    "upload_location": "https://apis.live.net/v5.0/folder.959da4d8356be659.959DA4D8356BE659!179/files/",
+    "count": 0,
+    "link": "https://onedrive.live.com/redir.aspx?cid=959da4d8356be659&page=view&resid=959DA4D8356BE659!179&parid=959DA4D8356BE659!103",
+    "type": "folder",
+    "shared_with": {
+        "access": "Just me"
+    },
+    "created_time": "2014-03-01T21:23:51+0000",
+    "updated_time": "2014-03-01T21:23:52+0000",
+    "client_updated_time": "2014-03-01T21:23:52+0000"
+}
