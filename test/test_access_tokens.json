@@ -8,17 +8,17 @@
         }
     },
     "box": {
-        "access_token": "K0HyBz5nu2nGMKZeFbLo65ICVurFm24I",
-        "refresh_token": "owS7aANlra5OITHLDxOqm33Fg3Vjzu4oryXtn9ArawHw565Y7EjIlTJ9EVHtWg0i",
+        "access_token": "RhMszRL46AXfggq2PXYbMTu2kZohAE9l",
+        "refresh_token": "6SazxU6wa6RMNmqG30Ga1TBLIz99AT8Pec76BcA97zvbdXSDCjN0xVBsXHVqC1Rw",
         "raw": {
-            "access_token": "K0HyBz5nu2nGMKZeFbLo65ICVurFm24I",
-            "expires_in": 3667,
+            "access_token": "RhMszRL46AXfggq2PXYbMTu2kZohAE9l",
+            "expires_in": 4234,
             "restricted_to": [],
             "token_type": "bearer"
         }
     },
     "google": {
-        "access_token": "ya29.1.AADtN_WlqfHCl5Fx11535N0uaMy17RIAyPz1nuCsMXu9xIsNQEziWucofkmS7gptRO87a8Es",
+        "access_token": "ya29.1.AADtN_XVyglnKuYo3MjJrA4ah3rHxQdLoBPRDjHdxadDvUjwwmkWGNVIM1SAlwpBZGBgmtnW",
         "token_type": "Bearer",
         "expires_in": 3600,
         "refresh_token": "1/IMcWJR9KJPVguuKLUrHzMjRl-XECLf6mK2YoUYnbQaU"
