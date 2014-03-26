@@ -51,8 +51,79 @@ Providers for the following Cloud Services are also planned:
           client_secret : 'j6vluc5yq7dxnj6'
         }
     });
-    var googleProvider = FileFog.provider('google');
 
+    //create a google provider and client using previously saved access_tokens
+    //call googleProvider.oAuthGetAuthorizeUrl() if you do not have access_tokens already.
+    var googleProvider = FileFog.provider('google');
+    googleProvider.CreateClient({
+        access_token: 'ya29.1.AADtN_W5vWUjYklaE_ZNkJBd2y9Ot60jF4SewLivnLgLHDYhmiadzbPPZntHmL4nceXs0w',
+        refresh_token: '1/IMcWJR9KJPVguuKLUrHzMjRl-XECLf6mK2YoUYnbQaU'
+    }).then(function (client) {
+        return client.GetFolderInformation();
+    }).then(function (response) {
+        assert.equal(response.mimeType, 'application/vnd.google-apps.folder');
+        assert.equal(response.title, 'My Drive');
+    })
+
+
+# FileFog Methods
+
+##`FileFog.getConfig() `
+Returns the current FileFog configuration, including client_key, client_secret and client_scope for all cloud services.
+
+*Returns*
+   `{Object}` the FileFog configuration
+
+##`FileFog.setConfig(new_config) `
+Extend the current FileFog configuration, allowing you to specify the client_key, client_secret and client_scope for all cloud services.
+
+For some services, the only required properties are `client_key` and `client_secret` but some services may require you to customize `client_scope` as well.
+The `redirect_url` is optional and can be specified here, in the `provider` method, or using the `RedirectUrlGenerator`.
+
+    {
+        "google" : {
+            "client_key" : '777041726477-a5o1tp6f3i9m1me3tj5vhpnrn1jge43c.apps.googleusercontent.com',
+            "client_secret" : 'mWURYHmMKZxr6aeR7DTjRu-q',
+            "client_scope" : "https://www.googleapis.com/auth/drive"
+            "redirect_url" : "http://www.example.com:3000/service/callback/google"
+        }
+    }
+
+*Parameters*
+-  `new_config {Object}` The object that will be used to extend the existing FileFog configuration.
+
+*Returns*
+   `{null}`
+
+
+##`FileFog.provider(service, provider_options) `
+Returns an instance of the specified cloud provider.
+
+*Parameters*
+-  `service {Enum}` This is an enum, the current options are "box", "dropbox", "google" or "skydrive".
+-  `provider_options {Object}` (optional) one or more of the options below:
+    - `redirect_url {String}` Specifies the redirect url for this cloud service. _default RedirectUrlGenerator()_
+
+*Returns*
+   `{null}`
+
+
+##`FileFog.getRedirectUrlGenerator() `
+Returns the RedirectUrlGenerator method that is used by the `provider.oAuthGetAuthorizeUrl()` method. If your redirect_url is not specified in the configuration or via the provider_options, this function should be overridden
+
+    var redirect_url_generator = function (service){
+        var service_name = service.toLowerCase();
+        return 'http://www.example.com:3000/service/callback/' + service_name
+    }
+
+*Returns*
+   `{Function}` A function that can be used to dynamically generate redirect urls for cloud services.
+
+##`FileFog.setRedirectUrlGenerator(fn) `
+Sets the RedirectUrlGenerator method that is used by the `provider.oAuthGetAuthorizeUrl()` if a `redirect_url` is not specified.
+
+*Parameters*
+-  `fn {Function}` The function to be used to dynamically create redirect_urls.
 
 # Cloud Service Provider Methods
 
