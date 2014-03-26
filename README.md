@@ -102,6 +102,8 @@ This is a wrapper for the `client` constructor. It provides simple access to the
 Retrieves information about the logged in user.
 
 *Parameters*
+-  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
@@ -110,6 +112,8 @@ Retrieves information about the logged in user.
 Retrieves information about the logged in user's file storage quota. 
 
 *Parameters*
+-  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
@@ -122,11 +126,11 @@ Use the file upload or create API to allow users to add a new file. Depending on
 -  `parentIdentifier {String}` Depending on the service,this should either be the path of the file to be created or the identifier for the parent folder. Use `null` if the file should be created in the `root` cloud storage directory. 
 -  `content_buffer {Buffer}` the contents to be written to the file
 -  `options {Object}` (optional) one or more of the options below:
-	
-- **Dropbox**
-	- *lastVersionTag (String)* — the identifier string for the version of the file's contents that was last read by this program, used for conflict resolution; for best results, use the versionTag attribute value from the Dropbox.File.Stat instance provided by readFile
-	- *parentRev (String)* — alias for "lastVersionTag" that matches the HTTP API
-	- *noOverwrite (Boolean)* — if set, the write will not overwrite a file with the same name that already exists; instead the contents will be written to a similarly named file (e.g. "notes (1).txt" instead of "notes.txt") 	
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
+    - **Dropbox Options**
+	    - *lastVersionTag (String)* — the identifier string for the version of the file's contents that was last read by this program, used for conflict resolution; for best results, use the versionTag attribute value from the Dropbox.File.Stat instance provided by readFile
+	    - *parentRev (String)* — alias for "lastVersionTag" that matches the HTTP API
+	    - *noOverwrite (Boolean)* — if set, the write will not overwrite a file with the same name that already exists; instead the contents will be written to a similarly named file (e.g. "notes (1).txt" instead of "notes.txt")
 
 
 
@@ -134,12 +138,14 @@ Use the file upload or create API to allow users to add a new file. Depending on
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
 
 ##`client.UpdateFile(identifier, content_buffer, options) `
+__TODO:__ This method has not been implemented yet.
 Update and replace uploaded file content.
 
 *Parameters*
 -  `identifier {String}` Depending on the service,this should either be the path of the file to be updated or the identifier for the file.
 -  `content_buffer {Buffer}` the contents to be written to the file
--  `options {Object}` (optional) one or more of the options below:	
+-  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
@@ -150,6 +156,7 @@ Deletes a file. Depending on the service the `identifier` should the destination
 *Parameters*
 -  `parentIdentifier {String}` Depending on the service,this should either be the path of the file to be deleted or the identifier for the file.
 -  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
@@ -169,7 +176,8 @@ Used to retrieve the metadata about a file..
 
 *Parameters*
 -   `identifier {String}` Depending on the service,this should either be the path of the file or the identifier for the file.
- `options {Object}` (optional) one or more of the options below:
+-  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
@@ -181,13 +189,15 @@ Use this API to allow users to add a new folder. Depending on the service the `p
 -  `folderName {String}` The name of the folder to be created on the cloud service
 -  `parentIdentifier {String}` Depending on the service,this should either be the path of the folder to be created or the identifier for the parent folder. Use `null` if the folder should be created in the `root` cloud storage directory. 
 -  `options {Object}` (optional) one or more of the options below:
-	
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
+
 ##`client.DeleteFolder(identifier, options) `
 Deletes a folder. Depending on the service the `identifier` should the destination folder identifier or full path for the folder.
 
 *Parameters*
 -  `identifier {String}` Depending on the service,this should either be the path of the folder to be deleted or the identifier for the folder.
 -  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
@@ -198,6 +208,7 @@ Used to retrieve the metadata about a folder.
 *Parameters*
 -  `identifier {String}` Depending on the service,this should either be the path of the folder or the identifier for the folder.
 -  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
@@ -208,21 +219,26 @@ Used to list the files and folders inside a folder
 *Parameters*
 -  `identifier {String}` Depending on the service,this should either be the path of the folder or the identifier for the folder.
 -  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
 
 ##`client.Search(query, options) `
+__TODO:__ This method has not been implemented yet.
 Used to find files and folders that match a query term
 
 *Parameters*
 -  `query {String}` The string to search for; can be matched against item names, descriptions, text content of a file. Depends on the cloud service.
 -  `options {Object}` (optional) one or more of the options below:
+    - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
 
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
 
 
 # TODO's
+- Search method
+- Update method
 - state - built-in state antiforgery token support.
 - transforms
