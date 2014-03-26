@@ -9,6 +9,9 @@ The FileFog philosophy is as follows:
 - __Don't reinvent the wheel__ - if a native library is available for NodeJS, use it. All we need  to do then is wrap the required methods to create a consistent user experience, and let the API designers themselves deal with most fo the implementation details.
 - __Avoid Callback Hell__ - Javascript and most libraries built on-top of it heavily make use of callbacks. While this is perfectly fine for some, I prefer the Promise design pattern for its reliability, simplicity and synchronous feel when working with pseudo-filesystems.
 
+# WARNING
+Please note that this package is under heavy development, and the unified API may change unexpectedly. Once the API is stable, a version 1.0 will be released on NPM.
+
 # Providers
 Initally FileFog will be released with only support for the following popular Cloud Services.
 
@@ -21,6 +24,7 @@ Providers for the following Cloud Services are also planned:
 
 - Bittorrent Sync
 - AnyCloud
+
 # Usage
 
     var FileFog = require('filefog')
