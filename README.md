@@ -98,7 +98,7 @@ This is a wrapper for the `client` constructor. It provides simple access to the
 
 # Client Methods
 
-##`client.AccountInfo() `
+##`client.AccountInfo(options) `
 Retrieves information about the logged in user.
 
 *Parameters*
@@ -108,7 +108,7 @@ Retrieves information about the logged in user.
 *Returns*
    `{Promise}` A promise that will successfully resolve into an `Object` with the following parameters
 
-##`client.CheckQuota() `
+##`client.CheckQuota(options) `
 Retrieves information about the logged in user's file storage quota. 
 
 *Parameters*
@@ -128,9 +128,9 @@ Use the file upload or create API to allow users to add a new file. Depending on
 -  `options {Object}` (optional) one or more of the options below:
     - `raw_response {Boolean}` Specifies if the raw response from the cloud service should be returned, or if response transformation should occur _default false_
     - **Dropbox Options**
-	    - *lastVersionTag (String)* — the identifier string for the version of the file's contents that was last read by this program, used for conflict resolution; for best results, use the versionTag attribute value from the Dropbox.File.Stat instance provided by readFile
-	    - *parentRev (String)* — alias for "lastVersionTag" that matches the HTTP API
-	    - *noOverwrite (Boolean)* — if set, the write will not overwrite a file with the same name that already exists; instead the contents will be written to a similarly named file (e.g. "notes (1).txt" instead of "notes.txt")
+	    - `lastVersionTag {String}` — the identifier string for the version of the file's contents that was last read by this program, used for conflict resolution; for best results, use the versionTag attribute value from the Dropbox.File.Stat instance provided by readFile
+	    - `parentRev {String}` — alias for "lastVersionTag" that matches the HTTP API
+	    - `noOverwrite {Boolean}` — if set, the write will not overwrite a file with the same name that already exists; instead the contents will be written to a similarly named file (e.g. "notes (1).txt" instead of "notes.txt")
 
 
 
