@@ -19,7 +19,9 @@ describe("ProviderWrapper",function(){
     it("should have a setConfig() method", function(){
         provider.setConfig.should.be.a.Function;
     })
-
+    it("should have a getClient() method", function(){
+        provider.getClient.should.be.a.Function;
+    })
     it("should have an name property", function(){
         provider.name.should.be.a.String;
     })
