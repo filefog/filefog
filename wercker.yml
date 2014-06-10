@@ -15,8 +15,8 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
-deploy :
-  steps :
+deploy:
+  steps:
     - npm-version
         type: patch
         message: automatic version bump by wercker.
