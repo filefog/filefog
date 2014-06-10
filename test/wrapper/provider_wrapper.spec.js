@@ -43,6 +43,4 @@ describe("ProviderWrapper",function(){
         })
     })
 
-
-
 })
