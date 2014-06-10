@@ -85,16 +85,7 @@ module.exports = function (oauth_data, provider_options) {
 
     this.AccountInfo = function (options) {
         options = options || {}
-        return getClient()
-            .then(function (client) {
-                var deferred = Q.defer();
-                client.getAccountInfo(options || {}, function (err, stat) {
-                    err = errorHandler(err);
-                    if (err) return deferred.reject(err);
-                    return deferred.resolve(stat);
-                });
-                return deferred.promise;
-            })
+
             .then(function (response) {
                 var raw_response = options.raw_response || provider_options.raw_response;
                 if (raw_response)
