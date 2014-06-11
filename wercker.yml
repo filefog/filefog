@@ -21,4 +21,5 @@ deploy:
     - analogj/npm-version@0.0.7:
         version_type: patch
         version_message: "automatic version bump by wercker"
-    - analogj/git-push@0.0.1
+    - analogj/git-push@0.0.2:
+        github_access_token: $GITHUB_ACCESS_TOKEN
