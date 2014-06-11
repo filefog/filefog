@@ -18,6 +18,6 @@ build:
 deploy:
   steps:
     - analogj/git-configure@0.0.3
-    - analogj/npm-version@0.0.5:
+    - analogj/npm-version@0.0.6:
         version_type: patch
         version_message: automatic
