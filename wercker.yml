@@ -17,7 +17,7 @@ build:
           echo "npm version $(npm -v) running"
 deploy:
   steps:
-    - analogj/git-configure@0.0.3:
+    - analogj/git-configure@0.0.3
     - analogj/npm-version@0.0.0:
         type: patch
         message: automatic
