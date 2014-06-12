@@ -23,7 +23,7 @@ deploy:
         version_message: "automatic version bump by wercker"
     - analogj/git-push@0.0.3:
         github_access_token: $GITHUB_ACCESS_TOKEN
-    - analogj/git-pull-request@0.0.0:
+    - analogj/git-pull-request@0.0.1:
         github_access_token: $GITHUB_ACCESS_TOKEN
         source: development
         destination: master
