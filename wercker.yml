@@ -18,12 +18,12 @@ build:
 deploy:
   steps:
     - analogj/git-configure@0.0.3
-    - analogj/npm-version@0.0.20:
+    - analogj/npm-version@0.0.21:
         version_type: patch
         version_message: "automatic version bump by wercker"
     - analogj/git-push@0.0.3:
         github_access_token: $GITHUB_ACCESS_TOKEN
-    - analogj/git-pull-request@0.0.1:
+    - analogj/git-pull-request@0.0.2:
         github_access_token: $GITHUB_ACCESS_TOKEN
         source: development
         destination: master
