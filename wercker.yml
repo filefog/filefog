@@ -18,7 +18,11 @@ build:
 deploy:
   steps:
     - analogj/git-configure@0.0.3
-    - analogj/npm-version@0.0.17:
+    - script:
+        name: echo git status
+        code: |
+          echo "$(git status)"
+    - analogj/npm-version@0.0.18:
         version_type: patch
         version_message: "automatic version bump by wercker"
     - analogj/git-push@0.0.3:
