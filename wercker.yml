@@ -18,7 +18,7 @@ build:
 deploy:
   steps:
     - analogj/git-configure@0.0.3
-    - analogj/npm-version@0.0.15:
+    - analogj/npm-version@0.0.16:
         version_type: patch
         version_message: "automatic version bump by wercker"
     - analogj/git-push@0.0.3:
