@@ -15,14 +15,14 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
-# Deploy definition
 deploy:
-    steps:
-        # Execute the heroku-deploy, heroku details can be edited
-        # online at http://app.wercker.com/
-        #- heroku-deploy
-
-        # Execute the s3sync deploy step, a step provided by wercker
-        - npm-version
-          type: patch
-          message: automatic
+  steps:
+    - analogj/node-continuous-deploy@0.0.13:
+        dev_branch: development
+        deploy_branch: master
+        version_bump: patch
+        github_access_token: $GITHUB_ACCESS_TOKEN
+        push: true
+        pr: true
+        npm_auth: $NPM_AUTH_TOKEN
+        npm_email: jason@thesparktree.com

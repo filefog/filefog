@@ -92,10 +92,6 @@ The `redirect_url` is optional and can be specified here, in the `provider` meth
 *Parameters*
 -  `new_config {Object}` The object that will be used to extend the existing FileFog configuration.
 
-*Returns*
-   `{null}`
-
-
 ##`FileFog.provider(service, provider_options) `
 Returns an instance of the specified cloud provider.
 
