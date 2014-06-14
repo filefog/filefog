@@ -13,8 +13,18 @@ describe('#use()', function () {
     it("should throw an error if an name isn't provided", function(){
         should(function(){
             var definition = {
+                /**
+                 * Description
+                 * @method provider
+                 * @return 
+                 */
                 provider : function(){},
                 transform: {},
+                /**
+                 * Description
+                 * @method client
+                 * @return 
+                 */
                 client: function(){}
             }
             FileFog.use("",definition)
@@ -61,8 +71,18 @@ describe("#provider()",function(){
 
     before(function(){
         var definition = {
+            /**
+             * Description
+             * @method provider
+             * @return 
+             */
             provider : function(){},
             transform: {},
+            /**
+             * Description
+             * @method client
+             * @return 
+             */
             client: function(){}
         }
         provider = FileFog.use("empty",definition)

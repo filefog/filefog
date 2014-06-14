@@ -5,8 +5,18 @@ describe("ProviderWrapper",function(){
 
     before(function(){
         var base_classes = {
+            /**
+             * Description
+             * @method provider
+             * @return 
+             */
             provider : function(){},
             transform: {},
+            /**
+             * Description
+             * @method client
+             * @return 
+             */
             client: function(){}
         }
         FileFog.use("empty",base_classes);
