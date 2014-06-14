@@ -17,13 +17,13 @@ build:
           echo "npm version $(npm -v) running"
 deploy:
   steps:
-    - analogj/git-configure@0.0.3
-    - analogj/npm-version@0.0.21:
-        version_type: patch
-        version_message: "automatic version bump by wercker"
-    - analogj/git-push@0.0.3:
+    - analogj/node-continuous-deploy@0.0.13:
+        dev_branch: development
+        deploy_branch: master
+        rdoc: true
+        version_bump: patch
         github_access_token: $GITHUB_ACCESS_TOKEN
-    - analogj/git-pull-request@0.0.3:
-        github_access_token: $GITHUB_ACCESS_TOKEN
-        source: development
-        destination: master
+        push: true
+        pr: true
+        npm_auth: $NPM_AUTH_TOKEN
+        npm_email: jason@thesparktree.com
