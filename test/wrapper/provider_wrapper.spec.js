@@ -3,6 +3,8 @@ var FileFog = require('../../lib/main.js');
 describe("ProviderWrapper",function(){
     var provider;
 
+    var Provider = function(){};
+    Provider.prototype.interfaces = [];
     before(function(){
         var base_classes = {
             /**
@@ -10,14 +12,15 @@ describe("ProviderWrapper",function(){
              * @method provider
              * @return 
              */
-            provider : function(){},
+            provider : Provider,
             transform: {},
             /**
              * Description
              * @method client
              * @return 
              */
-            client: function(){}
+            client: function(){},
+            config: {}
         }
         FileFog.use("empty",base_classes);
         provider = FileFog.provider("empty");
@@ -45,9 +48,9 @@ describe("ProviderWrapper",function(){
 
     describe("#setConfig()", function(){
         it("should extend existing values", function(){
-            provider.setConfig({test:"test", test2:"test2"})
+            provider.setConfig({ test:"test", test2:"test2" })
             provider.getConfig().test.should.eql("test");
-            provider.setConfig({test:"new_test"})
+            provider.setConfig({ test:"new_test" })
             provider.getConfig().test.should.eql("new_test");
 
         })

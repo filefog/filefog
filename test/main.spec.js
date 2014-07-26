@@ -69,6 +69,8 @@ describe('#use()', function () {
 describe("#provider()",function(){
     var provider
 
+    var Provider = function(){};
+    Provider.prototype.interfaces = [];
     before(function(){
         var definition = {
             /**
@@ -76,16 +78,17 @@ describe("#provider()",function(){
              * @method provider
              * @return 
              */
-            provider : function(){},
+            provider : Provider,
             transform: {},
             /**
              * Description
              * @method client
              * @return 
              */
-            client: function(){}
+            client: function(){},
+            config: {}
         }
-        provider = FileFog.use("empty",definition)
+        provider = FileFog.use("empty",definition,{})
     });
 
     it("should throw an error if the provider name is not valid", function(){
