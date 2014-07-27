@@ -3,8 +3,6 @@ var FileFog = require('../../lib/main.js');
 describe("ClientWrapper",function(){
     var clientPromise;
 
-    var Provider = function(){};
-    Provider.prototype.interfaces = [];
     before(function(){
         var base_classes = {
             /**
@@ -12,7 +10,7 @@ describe("ClientWrapper",function(){
              * @method provider
              * @return 
              */
-            provider : Provider,
+            provider : function(){},
             transform: {},
             /**
              * Description
@@ -20,7 +18,7 @@ describe("ClientWrapper",function(){
              * @return 
              */
             client: function(){},
-            config: {}
+            config: {interfaces:[]}
         }
         FileFog.use("empty",base_classes);
         clientPromise = FileFog.client("empty");

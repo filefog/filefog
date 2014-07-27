@@ -69,8 +69,6 @@ describe('#use()', function () {
 describe("#provider()",function(){
     var provider
 
-    var Provider = function(){};
-    Provider.prototype.interfaces = [];
     before(function(){
         var definition = {
             /**
@@ -78,7 +76,7 @@ describe("#provider()",function(){
              * @method provider
              * @return 
              */
-            provider : Provider,
+            provider : function(){},
             transform: {},
             /**
              * Description
@@ -86,7 +84,7 @@ describe("#provider()",function(){
              * @return 
              */
             client: function(){},
-            config: {}
+            config: {interfaces: []}
         }
         provider = FileFog.use("empty",definition,{})
     });
