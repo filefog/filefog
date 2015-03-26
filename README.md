@@ -20,11 +20,11 @@ Initally FileFog will be released with only support for the following popular Cl
 - Dropbox
 - Box.net
 - Local filesystem
+- Microsoft Azure Storage
 
 Providers for the following Cloud Services are also planned:
 
 - Amazon S3
-- Microsoft Azure Storage
 - Bittorrent Sync
 - AnyCloud
 - FTP
@@ -43,11 +43,11 @@ Providers for the following Cloud Services are also planned:
 
 
     //create a dropbox provider and client using previously saved access_tokens
+    var dropboxProvider = filefog.provider("dropbox")
     //call dropboxProvider.oAuthGetAuthorizeUrl() if you do not have access_tokens already.
-    //var dropboxProvider = filefog.provider("dropbox")
     //dropboxProvider.oAuthGetAuthorizeUrl()
 
-    dropboxClient = filefog.client("dropbox", {
+    dropboxClient = dropboxProvider.client({
         access_token: '...',
         refresh_token: '...'
     })
@@ -65,3 +65,11 @@ Providers for the following Cloud Services are also planned:
 - Search method
 - Update method
 - state - built-in state antiforgery token support.
+
+
+# Supported filefog_options
+    These are a list of commonly supported filefog options.
+    {Boolean|true} transform - determines if the raw response from the storage service is transformed to a filefog standardized format.
+    {Boolean|true} include_raw - include the raw response in the transformed response
+    {Boolean|true} auto_paginate - auto_paginate the responses if required
+    {Boolean|null} root_identifier - set the root_identifier to namespace all filefog operations to a specific folder.
