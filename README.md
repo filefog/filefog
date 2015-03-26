@@ -47,7 +47,7 @@ Providers for the following Cloud Services are also planned:
     //call dropboxProvider.oAuthGetAuthorizeUrl() if you do not have access_tokens already.
     //dropboxProvider.oAuthGetAuthorizeUrl()
 
-    dropboxClient = dropboxProvider.client({
+    dropboxClient = dropboxProvider.getClient({
         access_token: '...',
         refresh_token: '...'
     })
