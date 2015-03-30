@@ -47,7 +47,7 @@ Providers for the following Cloud Services are also planned:
     //call dropboxProvider.oAuthGetAuthorizeUrl() if you do not have access_tokens already.
     //dropboxProvider.oAuthGetAuthorizeUrl()
 
-    dropboxClient = dropboxProvider.getClient({
+    dropboxClient = dropboxProvider.getClienta({
         access_token: '...',
         refresh_token: '...'
     })
@@ -72,4 +72,4 @@ Providers for the following Cloud Services are also planned:
     {Boolean|true} transform - determines if the raw response from the storage service is transformed to a filefog standardized format.
     {Boolean|true} include_raw - include the raw response in the transformed response
     {Boolean|true} auto_paginate - auto_paginate the responses if required
-    {Boolean|null} root_identifier - set the root_identifier to namespace all filefog operations to a specific folder.
+    {String|null} root_identifier - set the root_identifier to namespace all filefog operations to a specific folder.
