@@ -1,5 +1,7 @@
 #`var FileFog = require('filefog')`
 
+[![Circle CI](https://circleci.com/gh/filefog/filefog.svg?style=svg)](https://circleci.com/gh/filefog/filefog)
+
 There are many cloud storage options for consumers. However each provider has their own API and API design philosophy, making it harder for developers to easily integrate their applications.
 
 The idea behind FileFog is to provide a single consistent, promise-based API for developers to access user uploaded data, without having to worry about differing OAuth implementations, base urls or data parsing.
